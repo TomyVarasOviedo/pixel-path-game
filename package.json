@@ -2,9 +2,9 @@
   "name": "app-emprendedurismo",
   "version": "1.0.0",
   "main": "index.js",
-  "homepage": "https://TomyVarasOviedo.github.io/",
+  "homepage": "https://TomyVarasOviedo.github.io/pixel-path-game",
   "scripts": {
-    "build": "node server.js",
+    "build": "npm run build",
     "predeploy":"npm run build",
     "deploy":"gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
