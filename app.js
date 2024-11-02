@@ -1,6 +1,6 @@
-import { PORT } from "./config.js";
+import  PORT from "./config.js";
 // Conectarse al servidor WebSocket
-const socket = new WebSocket("ws://localhost:PORT");
+const socket = new WebSocket(`ws://localhost:${PORT}`);
 
 // Elementos de la página
 const clickButton = document.getElementById("clickButton");
