@@ -1,4 +1,6 @@
-const {PORT, HOST} = require("./config.js");
+
+const PORT = 8080
+const HOST = "pixel-path-game-production.up.railway.app"
 // Conectarse al servidor WebSocket
 const socket = new WebSocket(`wss://${HOST}:${PORT}`);
 

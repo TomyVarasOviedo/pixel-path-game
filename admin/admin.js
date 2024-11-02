@@ -1,4 +1,5 @@
-const {PORT,HOST} = require("../config.js");
+const PORT = 8080
+const HOST = "pixel-path-game-production.up.railway.app"
 
 const buttonInit = document.getElementById('inicio')
 const socket = new WebSocket(`wss://${HOST}:${PORT}`);
