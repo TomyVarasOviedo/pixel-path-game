@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "express": "^4.21.1",
     "sweetalert2": "^11.14.4",
     "ws": "^8.18.0"
   },

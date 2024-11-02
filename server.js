@@ -1,13 +1,24 @@
 const {PORT} = require("./config.js");
 const http = require('http');
 const WebSocket = require("ws");
-// Inicia el servidor WebSocket en el puerto PORT
+const express = require('express')
+const path = require('path')
+
+
 let adminClient = null
+const app = express()
+//CONFIGURACION PARA HTML RENDERIZADO
+app.use(express.static(path.join(__dirname, '')))
 //END POINTS DE HTTPS
-const server = http.createServer((req, res) => {
-    res.writeHead(200);
-    res.end("Servidor HTTP para WebSocket en Railway");
-});
+app.get("/", (req, res)=>{
+    res.sendFile(path.join(__dirname, '', 'index.html'))
+})
+app.get("/admin/", (req, res)=>{
+    res.sendFile(path.join(__dirname, '/admin', 'admin.html'))
+})
+const server = http.createServer(app)
+
+//SOCKET PARA CONECTAR
 const socket = new WebSocket.Server({ server })
 // Manejador de eventos para cada conexión
 socket.on("connection", (ws) => {
