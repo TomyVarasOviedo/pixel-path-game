@@ -2,7 +2,7 @@
 const PORT = 8080
 const HOST = "pixel-path-game-production.up.railway.app"
 // Conectarse al servidor WebSocket
-const socket = new WebSocket(`wss://${HOST}:${PORT}`);
+const socket = new WebSocket(`wss://${HOST}`);
 
 // Elementos de la página
 const clickButton = document.getElementById("clickButton");

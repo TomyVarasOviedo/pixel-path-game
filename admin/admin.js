@@ -2,7 +2,7 @@ const PORT = 8080
 const HOST = "pixel-path-game-production.up.railway.app"
 
 const buttonInit = document.getElementById('inicio')
-const socket = new WebSocket(`wss://${HOST}:${PORT}`);
+const socket = new WebSocket(`wss://${HOST}`);
 
 socket.onmessage = (event) => {
     const message = JSON.parse(event.data);
