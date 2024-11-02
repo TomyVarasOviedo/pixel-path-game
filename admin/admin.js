@@ -1,5 +1,7 @@
+import { PORT } from "../config.js";
+
 const buttonInit = document.getElementById('inicio')
-const socket = new WebSocket("ws://localhost:8080");
+const socket = new WebSocket("ws://localhost:PORT");
 
 socket.onmessage = (event) => {
     const message = JSON.parse(event.data);
