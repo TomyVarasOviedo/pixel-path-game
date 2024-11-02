@@ -1,6 +1,5 @@
-import { PORT } from "./config.js";
+const {PORT} = require("./config.js");
 const WebSocket = require("ws");
-
 // Inicia el servidor WebSocket en el puerto PORT
 const server = new WebSocket.Server({ port: PORT });
 let adminClient = null

@@ -2,7 +2,7 @@
   "name": "app-emprendedurismo",
   "version": "1.0.0",
   "main": "index.js",
-  "homepage": "https://TomyVarasOviedo.github.io/pixel-path-game",
+  "homepage": "https://TomyVarasOviedo.github.io/pixel-path-game/index.html",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

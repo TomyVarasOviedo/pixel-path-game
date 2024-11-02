@@ -1,4 +1,4 @@
-import  PORT from "./config.js";
+const {PORT} = require("./config.js");
 // Conectarse al servidor WebSocket
 const socket = new WebSocket(`ws://localhost:${PORT}`);
 

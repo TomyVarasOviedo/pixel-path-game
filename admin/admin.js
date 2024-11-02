@@ -1,4 +1,4 @@
-import  PORT from "../config.js";
+const {PORT} = require("../config.js");
 
 const buttonInit = document.getElementById('inicio')
 const socket = new WebSocket(`ws://localhost:${PORT}`);
