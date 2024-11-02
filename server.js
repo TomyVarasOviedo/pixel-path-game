@@ -1,7 +1,8 @@
+import { PORT } from "./config.js";
 const WebSocket = require("ws");
 
-// Inicia el servidor WebSocket en el puerto 8080
-const server = new WebSocket.Server({ port: 8080 });
+// Inicia el servidor WebSocket en el puerto PORT
+const server = new WebSocket.Server({ port: PORT });
 let adminClient = null
 
 // Manejador de eventos para cada conexión
