@@ -5,9 +5,6 @@
   "homepage": "https://TomyVarasOviedo.github.io/pixel-path-game",
   "scripts": {
     "start": "node server.js",
-    "build": "npm run build",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
