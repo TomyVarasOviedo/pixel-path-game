@@ -6,6 +6,7 @@ const path = require('path')
 
 
 let adminClient = null
+let cantidadClientes =0
 const app = express()
 //CONFIGURACION PARA HTML RENDERIZADO
 app.use(express.static(path.join(__dirname, '')))
@@ -22,6 +23,8 @@ const server = http.createServer(app)
 const socket = new WebSocket.Server({ server })
 // Manejador de eventos para cada conexión
 socket.on("connection", (ws) => {
+    cantidadClientes++
+    console.log(`${cantidadClientes}`)
     ws.on("message", (message) => {
         const data = JSON.parse(message);
 
