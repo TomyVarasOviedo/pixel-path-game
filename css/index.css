@@ -63,3 +63,9 @@ div:where(.swal2-container) div:where(.swal2-popup){
 .swal2-show button{
     background-color: var(--orange);
 }
+@media only screen and (max-width: 600px){
+    img{
+        width: 100px;
+        height: 100px;
+    }
+}

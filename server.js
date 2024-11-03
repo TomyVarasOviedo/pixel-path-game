@@ -7,6 +7,7 @@ const path = require('path')
 
 let adminClient = null
 let cantidadClientes =0
+let jugadoresPendientes = []
 const app = express()
 //CONFIGURACION PARA HTML RENDERIZADO
 app.use(express.static(path.join(__dirname, '')))
@@ -23,8 +24,8 @@ const server = http.createServer(app)
 const socket = new WebSocket.Server({ server })
 // Manejador de eventos para cada conexión
 socket.on("connection", (ws) => {
-    cantidadClientes++
-    console.log(`${cantidadClientes}`)
+    console.log(`${ws.bufferedAmount}`);
+    
     ws.on("message", (message) => {
         const data = JSON.parse(message);
 
@@ -36,13 +37,30 @@ socket.on("connection", (ws) => {
                 }
             })
         }
-        if (data.admin == true) {
+        if(adminClient == null && data.jugador){
+            // Si el admin no se encuentra logueado y llega un jugador los guarda como pendiente
+            jugadoresPendientes.push(data.jugador)
+            console.log(jugadoresPendientes);
+            
+        }else if (data.admin == true) {
             console.log("Admin encontrado");
             adminClient=ws
         }
+        if(data.jugador && adminClient != null){
+            adminClient.send(JSON.stringify({jugador:data.jugador}))
+        }
+        if (jugadoresPendientes.length != 0 && adminClient != null) {
+            adminClient.send(JSON.stringify({pendientes:jugadoresPendientes}))
+            jugadoresPendientes = []
+        }
+        
         if (data.win) {
+            socket.clients.forEach(client =>{
+                client.send(JSON.stringify({estado:"juego_terminado"}))
+            })
             adminClient.send(JSON.stringify({winner:`${data.winner}`}))
         }
+        
     });
 });
 server.listen(PORT, () => {

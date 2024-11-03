@@ -41,6 +41,7 @@ let inputName=()=>{
             }
     }).then(result=>{
         if (result.isConfirmed) {
+            socket.send(JSON.stringify({jugador:player}))
             Swal.fire({
                 icon:"success",
                 showConfirmButton:false,
@@ -60,7 +61,7 @@ clickButton.addEventListener("click", () => {
     totalClicks = clicks++;
     counterDisplay.textContent = `${clicks}`;
     // Chequear si ha llegado a 2000
-    if (totalClicks >= PUNTOS_FINALES) {
+    if (totalClicks >= (PUNTOS_FINALES - 1)) {
         socket.send(JSON.stringify({ win:true, winner:player }));
             
     }
@@ -86,5 +87,25 @@ socket.onmessage = (event) => {
               }
         })
         clickButton.removeAttribute("disabled")
+    }
+    if (message.estado == "juego_terminado") {
+        clickButton.setAttribute('disabled', "true")
+        Swal.fire({
+            icon:"warning",
+            text:"El juego se termino",
+            allowOutsideClick:false,
+            iconColor:"#C89B3C",
+            showClass:{
+                popup: 'swal2-show',
+                backdrop: 'swal2-backdrop-show',
+                icon: 'swal2-icon-show'
+              },
+              showConfirmButton:false,
+              timerProgressBar:true,
+              timer:1500,
+              didOpen: () => {
+                  Swal.showLoading();
+              }
+        })
     }
 };
