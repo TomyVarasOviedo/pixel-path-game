@@ -75,6 +75,7 @@ socket.onmessage = (event) => {
     
     if (message.estado == "Iniciar_juego") {
         console.log("Iniciando el juego");
+        counterDisplay.textContent = "0"
         Swal.fire({
             icon:"warning",
             text:"El juego esta comenzando",
@@ -90,6 +91,8 @@ socket.onmessage = (event) => {
     }
     if (message.estado == "juego_terminado") {
         clickButton.setAttribute('disabled', "true")
+        totalClicks=0
+        clicks=0
         Swal.fire({
             icon:"warning",
             text:"El juego se termino",
@@ -99,13 +102,13 @@ socket.onmessage = (event) => {
                 popup: 'swal2-show',
                 backdrop: 'swal2-backdrop-show',
                 icon: 'swal2-icon-show'
-              },
-              showConfirmButton:false,
-              timerProgressBar:true,
-              timer:1500,
-              didOpen: () => {
-                  Swal.showLoading();
-              }
+            },
+            showConfirmButton:false,
+            timerProgressBar:true,
+            timer:1500,
+            didOpen: () => {
+                Swal.showLoading();
+            }
         })
     }
 };
