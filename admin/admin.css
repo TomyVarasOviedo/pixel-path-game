@@ -42,3 +42,7 @@ th, td {
 thead{
     background-color: var(--orange);
 }
+tbody{
+    color: #ffff;
+    background-color: var(--dark-blue);
+}

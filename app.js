@@ -7,7 +7,7 @@ const socket = new WebSocket(`wss://${HOST}`);
 // Elementos de la página
 const clickButton = document.getElementById("clickButton");
 const counterDisplay = document.getElementById("counter");
-const PUNTOS_FINALES = 50
+const PUNTOS_FINALES = 100
 // Contador de clics
 let clicks = 0;
 let totalClicks
