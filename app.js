@@ -62,6 +62,9 @@ clickButton.addEventListener("click", () => {
     counterDisplay.textContent = `${clicks}`;
     // Chequear si ha llegado a 2000
     if (totalClicks >= (PUNTOS_FINALES - 1)) {
+        clickButton.setAttribute('disabled', "true")
+        totalClicks=0
+        clicks=0
         socket.send(JSON.stringify({ win:true, winner:player }));
             
     }
@@ -90,9 +93,6 @@ socket.onmessage = (event) => {
         clickButton.removeAttribute("disabled")
     }
     if (message.estado == "juego_terminado") {
-        clickButton.setAttribute('disabled', "true")
-        totalClicks=0
-        clicks=0
         Swal.fire({
             icon:"warning",
             text:"El juego se termino",
