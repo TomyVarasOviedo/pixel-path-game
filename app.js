@@ -84,6 +84,8 @@ socket.onmessage = (event) => {
             text:"El juego esta comenzando",
             timer:1500,
             iconColor:"#C89B3C",
+            allowOutsideClick:false,
+            showConfirmButton:false,
             showClass:{
                 popup: 'swal2-show',
                 backdrop: 'swal2-backdrop-show',
