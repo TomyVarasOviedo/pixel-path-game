@@ -44,6 +44,7 @@ nav img{
     font-size: 1.55em;
     border-radius: 100%;
     border: none;
+    border: 1px solid var(--orange);
     color: var(--dark-blue);
     cursor: pointer;
     background-color: var(--orange);
